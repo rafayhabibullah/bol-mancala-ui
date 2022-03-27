@@ -1,0 +1,28 @@
+
+<div class="container mt-5">
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control" id="player1Name" placeholder="Player Name" name="player1Name"
+                formControlName="player1Name">
+            <label for="player1Name">Player Name</label>
+            <div *ngIf="f['player1Name'].touched && f['player1Name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['player1Name'].errors && f['player1Name'].errors['required']">Player name is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
+            <input type="text" class="form-control" id="player2Name" placeholder="Player Name" name="player2Name"
+                formControlName="player2Name">
+            <label for="player2Name">Player Name</label>
+            <div *ngIf="f['player2Name'].touched && f['player2Name'].invalid" class="alert alert-danger">
+                <div *ngIf="f['player2Name'].errors && f['player2Name'].errors['required']">Player name is required.
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary form-floating mb-3 mt-3" type="submit" [disabled]="!form.valid">Start</button>
+
+    </form>
+</div>

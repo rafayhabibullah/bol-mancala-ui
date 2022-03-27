@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <h3>Player Turn : </h3> {{playerTurn}}
+    <h3>Player Name : </h3> {{playerTurn == 'PLAYER_A' ? playerAName : playerBName}}
+</div>
+
+<div class="container col-lg-12 board">
+    
+    <div class="section endsection">
+        <div class="bigPit" id="mb">{{otherBigPit}}</div>
+    </div>
+    <div class="section midsection">
+        <div class="midrow topmid">
+            <div *ngFor="let pit of otherPlayerPits.reverse(); let i = index" class="pot"
+                [ngClass]=" playerTurn == 'PLAYER_A' ? 'disable-card' : 'activePit' "
+                (click)="sow(otherPlayerPits.length - i, 'PLAYER_B')"
+                id="pb{{otherPlayerPits.length - i}}">
+                <p>{{pit}}</p>
+            </div>
+        </div>
+        <div class="midrow botmid">
+            <div *ngFor="let pit of currentPlayerPits; let i = index" class="pot"
+            [ngClass]=" playerTurn == 'PLAYER_B' ? 'disable-card' : '' "
+                (click)="sow(i + 1, 'PLAYER_A')" id="pb{{i + 1}}">
+                <p>{{pit}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="section endsection">
+        <div class="bigPit" id="mt">{{currentBigPit}}</div>
+    </div>
+</div>
